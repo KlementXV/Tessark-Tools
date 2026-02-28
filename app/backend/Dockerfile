@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-ARG RUST_VERSION=1.83
+ARG RUST_VERSION=1.87
 ARG APP_NAME=helmer-api
 
 FROM rust:${RUST_VERSION}-bookworm AS builder
