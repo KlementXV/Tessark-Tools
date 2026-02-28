@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # Tessark-Tools
-=======
-# Tessark
 
 Tessark est une application full-stack composee de:
 - un frontend Next.js (App Router)
@@ -186,9 +183,3 @@ tessark/
   README.md
 ```
 
-## Notes
-
-- Les references images sont validees par regex (`[A-Za-z0-9./:@_-]+`).
-- Les archives temporaires sont ecrites dans `/tmp` puis supprimees.
-- Le backend retourne des erreurs explicites (`404`, `403`, `502`, `504`) selon le cas.
->>>>>>> 08d8ebc (Initial commit)
