@@ -5,8 +5,8 @@ ARG APP_NAME=helmer-api
 FROM rust:${RUST_VERSION}-bookworm AS builder
 WORKDIR /app
 
-# Copy manifests first for better caching
-COPY Cargo.toml Cargo.lock ./
+# Copy manifest first for better caching (Cargo.lock may be absent)
+COPY Cargo.toml ./
 
 # Build dependencies only (cache this layer)
 RUN mkdir src && \
