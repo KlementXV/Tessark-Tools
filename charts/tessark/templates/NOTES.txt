@@ -1,0 +1,20 @@
+Thank you for installing {{ .Chart.Name }}!
+
+Your release is named {{ .Release.Name }}.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }} -n {{ .Values.namespace }}
+  $ helm get all {{ .Release.Name }} -n {{ .Values.namespace }}
+
+Application URLs:
+{{- if .Values.ingress.enabled }}
+  Frontend: https://{{ .Values.ingress.host }}
+  Backend API (internal): http://{{ .Values.backend.name }}-service:{{ .Values.backend.service.port }}
+{{- end }}
+
+To check the status of your deployments:
+  $ kubectl get deployments -n {{ .Values.namespace }}
+  $ kubectl get pods -n {{ .Values.namespace }}
+  $ kubectl get services -n {{ .Values.namespace }}
+  $ kubectl get ingressroutes -n {{ .Values.namespace }}

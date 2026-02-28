@@ -1,0 +1,41 @@
+{{- if and .Values.ingress.enabled (eq .Values.ingress.type "nginx") }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.frontend.name }}-ingress
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.frontend.name }}
+  {{- with .Values.ingress.nginx.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+    {{- if $.Values.ingress.tls.enabled }}
+    {{- if not (hasKey . "cert-manager.io/cluster-issuer") }}
+    cert-manager.io/cluster-issuer: {{ $.Values.ingress.tls.certResolver }}
+    {{- end }}
+    {{- end }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.nginx.ingressClassName }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      {{- if .Values.ingress.tls.secretName }}
+      secretName: {{ .Values.ingress.tls.secretName }}
+      {{- else }}
+      secretName: {{ .Values.frontend.name }}-tls
+      {{- end }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.frontend.name }}-service
+                port:
+                  number: {{ .Values.frontend.service.port }}
+{{- end }}

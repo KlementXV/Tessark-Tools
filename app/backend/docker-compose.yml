@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  helmer-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: helmer-api
+    ports:
+      - "8080:8080"
+    environment:
+      - RUST_LOG=info
+      - PORT=8080
+      - SKOPEO_PATH=skopeo
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

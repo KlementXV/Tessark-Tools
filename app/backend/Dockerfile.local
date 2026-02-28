@@ -1,0 +1,25 @@
+FROM debian:bookworm-slim
+ARG APP_NAME=helmer-api
+ARG APP_UID=1000
+WORKDIR /app
+
+# Dépendances runtime
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    skopeo \
+    ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+# Utilisateur non-root système (sans shell)
+RUN useradd -r -u ${APP_UID} -g users -d /nonexistent -s /usr/sbin/nologin helmer
+
+# Binaire local déjà compilé
+COPY ${APP_NAME} /usr/local/bin/${APP_NAME}
+
+USER ${APP_UID}
+ENV RUST_LOG=info \
+    PORT=8080 \
+    SKOPEO_PATH=/usr/bin/skopeo
+EXPOSE 8080
+
+CMD ["/usr/local/bin/helmer-api"]

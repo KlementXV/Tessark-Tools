@@ -1,0 +1,19 @@
+# Frontend (Next.js)
+app/frontend/.next/
+app/frontend/node_modules/
+app/frontend/.env*.local
+
+# Backend (Rust)
+app/backend/target/
+app/backend/Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

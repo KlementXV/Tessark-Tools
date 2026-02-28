@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "brand": "Tessark",
+    "charts": "Charts",
+    "pull": "Pull Image",
+    "lang": {
+      "switch": "Français"
+    }
+  },
+  "home": {
+    "title": "Helm Charts Explorer",
+    "subtitle": "Explore and download Helm charts in a few seconds.",
+    "placeholder": "https://charts.bitnami.com/bitnami",
+    "search": "Search",
+    "loading": "Loading...",
+    "errorInvalidUrl": "Please enter a valid Helm repository URL",
+    "errorFetch": "Failed to load the repository. Check the URL or contact the admin if the repo is private.",
+    "hint": "We look for an index.yaml at the repository root. If loading fails, the repo may block cross-origin requests (CORS).",
+    "exampleLabel": "Try a public repo"
+  },
+  "charts": {
+    "availableIn": "Charts available in",
+    "count": "{n} chart|{n} charts",
+    "app": "App",
+    "more": "+ {n} more version(s)",
+    "less": "Show less",
+    "latest": "Latest",
+    "versions": "versions",
+    "showAll": "Show all ({n})",
+    "search": "Search...",
+    "noResults": "No chart matches your search.",
+    "sort": {
+      "name": "Name",
+      "date": "Date",
+      "versions": "Versions"
+    }
+  },
+  "download": "Download",
+  "empty": {
+    "prompt": "Enter a Helm repository URL to get started",
+    "example": "Try: https://charts.bitnami.com/bitnami"
+  },
+  "pull": {
+    "title": "Download an image via skopeo",
+    "subtitle": "Pull a Docker/OCI image and get a tar archive.",
+    "imageRef": "Image references (one per line)",
+    "format": "Archive format",
+    "formatDocker": "docker-archive (.tar)",
+    "formatOci": "oci-archive (.tar)",
+    "note": "The server uses skopeo copy to fetch the image and returns a tar archive.",
+    "helper": "Enter one or more image references (one per line).",
+    "duplicatesIgnored": "({n} duplicate(s) ignored)",
+    "examplesTitle": "Quick examples",
+    "progress": "Downloading {current} of {total}...",
+    "success": "Download complete!",
+    "successMultiple": "{n} images downloaded successfully",
+    "confirmMultiple": "You are about to download {n} images. Do you want to continue?",
+    "auth": {
+      "toggle": "Authentication (optional)",
+      "username": "Username",
+      "password": "Password",
+      "note": "For private registries. Credentials are sent directly to the server.",
+      "title": "Private authentication"
+    },
+    "errors": {
+      "required": "Please enter at least one image reference",
+      "invalid": "Invalid format. Valid example: docker.io/library/nginx:latest or ghcr.io/user/image:tag",
+      "server": "Server error: {message}",
+      "network": "Network error: {message}"
+    }
+  },
+  "footer": {
+    "made": "Made with",
+    "by": "by",
+    "copyright": "© {year} Tessark",
+    "language": "Language"
+  },
+  "settings": {
+    "open": "Settings",
+    "title": "Settings",
+    "subtitle": "Language and interface colors",
+    "language": "Language",
+    "colors": "Colors",
+    "reset": "Reset color",
+    "palette": {
+      "obsidian": "Obsidian",
+      "ocean": "Ocean",
+      "emerald": "Emerald",
+      "amber": "Amber",
+      "rose": "Rose"
+    }
+  },
+  "common": {
+    "copy": "Copy",
+    "copied": "Copied!",
+    "clear": "Clear",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "loading": "Loading..."
+  }
+}

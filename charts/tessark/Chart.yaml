@@ -1,0 +1,15 @@
+apiVersion: v2
+name: tessark
+description: A Helm chart for Tessark application - Next.js frontend with Rust backend on Kubernetes
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+home: https://github.com/KlementXV/tessark
+sources:
+  - https://github.com/KlementXV/tessark
+keywords:
+  - tessark
+  - rust
+  - nextjs
+  - kubernetes
+  - traefik

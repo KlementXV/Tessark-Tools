@@ -1,0 +1,26 @@
+{{- if and .Values.ingress.enabled (eq .Values.ingress.type "traefik") }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.frontend.name }}-ingressroute
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.frontend.name }}
+spec:
+  entryPoints:
+    {{- range .Values.ingress.traefik.entryPoints }}
+    - {{ . }}
+    {{- end }}
+  routes:
+    - match: Host(`{{ .Values.ingress.host }}`)
+      kind: Rule
+      services:
+        - name: {{ .Values.frontend.name }}-service
+          port: {{ .Values.frontend.service.port }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    certResolver: {{ .Values.ingress.tls.certResolver }}
+    domains:
+      - main: {{ .Values.ingress.host | quote }}
+  {{- end }}
+{{- end }}
